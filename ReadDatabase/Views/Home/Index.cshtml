@@ -1,4 +1,5 @@
-﻿@model List<string>
+﻿@using ReadDatabase.Database
+@model List<Product>
 @{
   ViewData["Title"] = "Home Page";
 }
@@ -6,9 +7,11 @@
 <div class="text-center">
   <h1 class="display-4">Welcome</h1>
   <ul>
-    @foreach (var name in Model)
+    @foreach (var product in Model)
     {
-      <li>@name</li>
+      <li>@product.Naam - @product.Prijs - @product.Beschikbaarheid</li>
     }
   </ul>
 </div>
+
+
