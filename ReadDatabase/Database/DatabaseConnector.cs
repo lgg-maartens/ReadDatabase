@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 
-namespace ReadDatabase.Controllers
+namespace ReadDatabase.Database
 {
   public static class DatabaseConnector
   {
@@ -26,13 +26,15 @@ namespace ReadDatabase.Controllers
         // resultaat van de query lezen
         using (var reader = cmd.ExecuteReader())
         {
-          var tableData = reader.GetSchemaTable();          
+          var tableData = reader.GetSchemaTable();
+
           // elke keer een regel (of eigenlijk: database rij) lezen
           while (reader.Read())
           {
             var row = new Dictionary<string, object>();
 
-            for(int i = 0; i < reader.FieldCount; i++)
+            // haal voor elke kolom de waarde op en voeg deze toe
+            for (int i = 0; i < reader.FieldCount; i++)
             {
               row[reader.GetName(i)] = reader.GetValue(i);
             }
