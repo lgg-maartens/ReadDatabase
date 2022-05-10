@@ -16,3 +16,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+  .products a {
+    background-color: #298760;
+    text-decoration: none;
+    padding: 20px;
+    color: white;
+  }

@@ -1,0 +1,12 @@
+﻿@using ReadDatabase.Database
+@model Product
+@{
+  ViewData["Title"] = Model.Naam;
+}
+
+<div class="text-center">
+  <h1 class="display-4">@Model.Naam</h1>
+  <p>@Model.Prijs euro per stuk</p>
+  <p>Haast je! Er zijn er nog maar @Model.Beschikbaarheid over!</p>
+</div>
+
