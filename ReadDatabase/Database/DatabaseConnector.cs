@@ -4,13 +4,12 @@ namespace ReadDatabase.Database
 {
   public static class DatabaseConnector
   {
+    // stel in waar de database gevonden kan worden
+    // string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=fastfood;Uid=lgg;Pwd=<jouwwachtwoordhier>;";
+    private static string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=lgg;Pwd=CCSQrL8HwAJWyyzv;";
 
     public static List<Dictionary<string, object>> GetRows(string query)
     {
-      // stel in waar de database gevonden kan worden
-      // string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=fastfood;Uid=lgg;Pwd=<jouwwachtwoordhier>;";
-      string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=lgg;Pwd=CCSQrL8HwAJWyyzv;";
-
       // maak een lege lijst waar we de namen in gaan opslaan
       List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
 
@@ -49,5 +48,14 @@ namespace ReadDatabase.Database
       return rows;
     }
 
+    public static void Save(MySqlCommand cmd)
+    {      
+      using (MySqlConnection conn = new MySqlConnection(connectionString))
+      {
+        conn.Open();
+       
+        cmd.ExecuteNonQuery();
+      }
+    }
   }
 }

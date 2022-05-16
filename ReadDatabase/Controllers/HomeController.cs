@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using ReadDatabase.Database;
 using ReadDatabase.Models;
 using System.Diagnostics;
@@ -30,6 +31,16 @@ namespace ReadDatabase.Controllers
 
       // de lijst met namen in de html stoppen
       return View(names);
+    }
+
+    private void SavePerson(Person person)
+    {
+      MySqlCommand cmd = new MySqlCommand("INSERT INTO klant(voornaam, achternaam, email, bericht) VALUES(?voornaam, ?achternaam, ?email, ?bericht)", conn);
+
+      cmd.Parameters.Add("?voornaam", MySqlDbType.Text).Value = person.FirstName;
+      cmd.Parameters.Add("?achternaam", MySqlDbType.Text).Value = person.LastName;
+      cmd.Parameters.Add("?email", MySqlDbType.Text).Value = person.Email;
+      cmd.Parameters.Add("?bericht", MySqlDbType.Text).Value = person.Description;
     }
 
     public IActionResult Privacy()
