@@ -4,14 +4,11 @@ namespace ReadDatabase.Database
 {
   public static class DatabaseConnector
   {
-
+    // stel in waar de database gevonden kan worden
+    //string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=fastfood;Uid=lgg;Pwd=I0QBJPy51P45QKcP;";
+    private static string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=fastfood;Pwd=I0QBJPy51P45QKcP;";
     public static List<Dictionary<string, object>> GetRows(string query)
     {
-      // stel in waar de database gevonden kan worden
-      string connectionString = "Server=informatica.st-maartenscollege.nl;Port=3306;Database=fastfood;Uid=lgg;Pwd=CCSQrL8HwAJWyyzv;";
-      // string connectionString = "Server=172.16.160.21;Port=3306;Database=fastfood;Uid=lgg;Pwd=CCSQrL8HwAJWyyzv;";
-    
-
       // maak een lege lijst waar we de namen in gaan opslaan
       List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
 
